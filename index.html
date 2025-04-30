@@ -3,59 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Skyframe Innovations | NOVA is Coming Online</title>
+  <title>Skyframe Innovations | Powered by NOVA</title>
   <meta name="description" content="Skyframe Innovations is building the future of drone compliance, powered by NOVA." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #000;
-      color: #fff;
+      color: #0ff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      text-align: center;
+      min-height: 100vh;
       padding: 20px;
+      text-align: center;
     }
     h1 {
       font-size: 3rem;
-      color: #00f0ff;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .tagline {
-      font-size: 1.2rem;
       color: #ccc;
       margin-bottom: 2rem;
+      font-size: 1.1rem;
     }
-    .nova-boot {
-      font-family: monospace;
+    .console {
       background: #111;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       border-radius: 8px;
-      color: #0ff;
-      margin-bottom: 2rem;
-      animation: blink 1s steps(2, start) infinite;
-    }
-    @keyframes blink {
-      to { visibility: hidden; }
-    }
-    .coming-soon {
+      font-family: monospace;
       font-size: 1rem;
-      color: #888;
+      text-align: left;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      width: 100%;
+    }
+    input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 10px;
+      background: #0ff;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00cccc;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
   <h1>Skyframe Innovations</h1>
-  <div class="tagline">
-    <!-- Choose one or replace with your own -->
-    Empowering Pilots. Elevating Compliance. Powered by NOVA.
-    <!-- OR -->
-    <!-- The sky is no longer the limit. It’s the interface. -->
+  <div class="tagline">The sky is no longer the limit. It’s the interface.</div>
+  
+  <div class="console">
+    > Booting core modules... <br/>
+    > Initializing AI Compliance Agent: <strong>NOVA</strong>... <br/>
+    > Connecting to pilot network... <br/>
+    > Listening for early access requests...
   </div>
-  <div class="nova-boot">Initializing AI Compliance Agent: NOVA...</div>
-  <p class="coming-soon">Skyframe systems are coming online. Please stand by.</p>
+
+  <form class="form-container" action="https://formspree.io/f/mwkgenzd" method="POST">
+    <input type="email" name="email" placeholder="Enter your email for early access" required />
+    <button type="submit">Join the Launch List</button>
+  </form>
+
+  <footer>
+    Skyframe Innovations © 2025 | Powered by NOVA
+  </footer>
 </body>
 </html>
