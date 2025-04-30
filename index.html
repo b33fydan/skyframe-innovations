@@ -1,40 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Skyframe Innovations | Powered by NOVA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Skyframe Innovations is building the future of drone intelligence, powered by NOVA – our AI compliance agent.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skyframe Innovations | NOVA is Coming Online</title>
+  <meta name="description" content="Skyframe Innovations is building the future of drone compliance, powered by NOVA." />
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      background: black;
-      color: white;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
+      padding: 20px;
     }
     h1 {
       font-size: 3rem;
       color: #00f0ff;
+      margin-bottom: 1rem;
     }
-    p {
+    .tagline {
       font-size: 1.2rem;
-      color: #aaa;
+      color: #ccc;
+      margin-bottom: 2rem;
     }
-    .nova {
-      font-weight: bold;
-      color: #ff00c8;
+    .nova-boot {
+      font-family: monospace;
+      background: #111;
+      padding: 1rem;
+      border-radius: 8px;
+      color: #0ff;
+      margin-bottom: 2rem;
+      animation: blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+    .coming-soon {
+      font-size: 1rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <h1>Skyframe Innovations</h1>
-  <p class="nova">NOVA is preparing for launch.</p>
-  <p>Our systems are coming online. Check back soon.</p>
+  <div class="tagline">
+    <!-- Choose one or replace with your own -->
+    Empowering Pilots. Elevating Compliance. Powered by NOVA.
+    <!-- OR -->
+    <!-- The sky is no longer the limit. It’s the interface. -->
+  </div>
+  <div class="nova-boot">Initializing AI Compliance Agent: NOVA...</div>
+  <p class="coming-soon">Skyframe systems are coming online. Please stand by.</p>
 </body>
 </html>
