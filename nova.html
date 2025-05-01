@@ -50,17 +50,32 @@
   </div>
 
   <script>
-    function simulateCommand(e) {
-      if (e.key === 'Enter') {
-        const terminal = document.getElementById('terminalOutput');
-        const input = e.target.value.trim();
-        if (input) {
-          terminal.innerText += `\n> ${input}\n> [Simulated response for: '${input}']`;
-          e.target.value = '';
-          terminal.scrollTop = terminal.scrollHeight;
-        }
+  async function simulateCommand(e) {
+    if (e.key === 'Enter') {
+      const terminal = document.getElementById('terminalOutput');
+      const input = e.target.value.trim();
+      if (!input) return;
+
+      terminal.innerText += `\n> ${input}`;
+      e.target.value = '';
+      terminal.scrollTop = terminal.scrollHeight;
+
+      try {
+        const res = await fetch('/.netlify/functions/nova', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: input })
+        });
+        const data = await res.json();
+        terminal.innerText += `\n> ${data.reply}`;
+      } catch (err) {
+        terminal.innerText += `\n> Error reaching NOVA. Check uplink.`;
       }
+
+      terminal.scrollTop = terminal.scrollHeight;
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
