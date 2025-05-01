@@ -29,27 +29,34 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    // Initialize map
-    const map = L.map('map').setView([40.2732, -76.8867], 8); // Centered on Central PA
+  const map = L.map('map').setView([40.2732, -76.8867], 8);
 
-    // Add dark tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap contributors & CartoDB',
-      maxZoom: 18,
-    }).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors & CartoDB',
+    maxZoom: 18,
+  }).addTo(map);
 
-    // Add dummy markers
-    const zones = [
-      { lat: 40.2732, lng: -76.8867, name: "Harrisburg Open Zone" },
-      { lat: 40.7989, lng: -77.8599, name: "State College Scenic Path" },
-      { lat: 40.0381, lng: -76.3055, name: "Lancaster Greenfield" },
-    ];
+  fetch('zones.json')
+    .then(response => response.json())
+    .then(zones => {
+      zones.forEach(zone => {
+        const popupContent = `
+          <strong>${zone.name}</strong><br>
+          ${zone.description}<br>
+          <em>Airspace:</em> ${zone.airspace}<br>
+          <em>Ceiling:</em> ${zone.ceiling_ft} ft<br>
+          <em>Status:</em> ${zone.status}
+        `;
+        const marker = L.marker([zone.lat, zone.lng])
+          .addTo(map)
+          .bindPopup(popupContent);
 
-    zones.forEach(zone => {
-      L.marker([zone.lat, zone.lng])
-        .addTo(map)
-        .bindPopup(`<strong>${zone.name}</strong><br>Drone-friendly area (mock)`);
+        // Color marker based on status (optional future)
+      });
+    })
+    .catch(error => {
+      console.error("Error loading zones:", error);
     });
-  </script>
+</script>
 </body>
 </html>
