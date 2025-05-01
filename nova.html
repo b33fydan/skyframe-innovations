@@ -60,6 +60,14 @@
       e.target.value = '';
       terminal.scrollTop = terminal.scrollHeight;
 
+      terminal.innerText += `\n> NOVA is processing`;
+
+      // Typing animation dots
+      let dots = 0;
+      const interval = setInterval(() => {
+        terminal.innerText = terminal.innerText.replace(/\.{0,3}$/, '.'.repeat(++dots % 4));
+      }, 500);
+
       try {
         const res = await fetch('/.netlify/functions/nova', {
           method: 'POST',
@@ -67,15 +75,19 @@
           body: JSON.stringify({ message: input })
         });
         const data = await res.json();
+
+        clearInterval(interval);
         terminal.innerText += `\n> ${data.reply}`;
       } catch (err) {
-        terminal.innerText += `\n> Error reaching NOVA. Check uplink.`;
+        clearInterval(interval);
+        terminal.innerText += `\n> System error. Uplink failed.`;
       }
 
       terminal.scrollTop = terminal.scrollHeight;
     }
   }
 </script>
+
 
 </body>
 </html>
